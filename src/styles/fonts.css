@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Gallery Modern';
+  src: url('./gallerymodern-webfont.woff') format('woff');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gallery Modern:Regular';
+  src: url('./gallerymodern-webfont.woff') format('woff');
+  font-display: swap;
+}

@@ -1,0 +1,65 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Always reserve the scrollbar gutter so locking body scroll (mobile menu) doesn't
+   widen the viewport and shift the fixed nav / burger icon sideways. */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Custom cursor: hide the native cursor on devices with a precise pointer (mouse/trackpad). */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Burger -> X (mobile menu toggle): 24px icon, three centered full-width bars. Toggled, the
+   middle bar fades out and the top/bottom bars cross into a clean 2-bar X.
+   Bars use currentColor so they follow the nav color. */
+.menu {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.menu::before,
+.menu::after {
+  content: "";
+}
+.menu .menu-middle,
+.menu::before,
+.menu::after {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 10px;
+}
+.menu .menu-middle {
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease-out;
+}
+.menu::before {
+  top: 4px;
+  transition: top 0.3s ease-out 0.15s, transform 0.3s ease-out;
+}
+.menu::after {
+  bottom: 4px;
+  transition: bottom 0.3s ease-out 0.15s, transform 0.3s ease-out;
+}
+.menu.js-toggled .menu-middle {
+  opacity: 0;
+}
+.menu.js-toggled::before {
+  top: 11px;
+  transform: rotate(45deg);
+  transition: top 0.3s ease-out, transform 0.3s ease-out 0.15s;
+}
+.menu.js-toggled::after {
+  bottom: 11px;
+  transform: rotate(-45deg);
+  transition: bottom 0.3s ease-out, transform 0.3s ease-out 0.15s;
+}
